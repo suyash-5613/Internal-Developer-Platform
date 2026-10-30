@@ -29,6 +29,7 @@ api.interceptors.request.use((config) => {
 export type HealthStatus = {
   status: string
   database: string
+  github?: string
   message: string
 }
 

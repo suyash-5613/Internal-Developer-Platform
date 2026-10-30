@@ -217,7 +217,11 @@ export function OverviewPage() {
                 }
                 tone={health?.database === 'UP' ? 'success' : 'warning'}
               />
-              <Connection name="GitHub" status="Not connected" tone="neutral" />
+              <Connection
+                name="GitHub"
+                status={health?.github === 'Connected' ? 'Connected' : 'Not connected'}
+                tone={health?.github === 'Connected' ? 'success' : 'neutral'}
+              />
               <Connection name="Kubernetes" status="Unavailable" tone="warning" />
               <Connection name="Metrics (Prometheus)" status="Unavailable" tone="warning" />
             </div>
