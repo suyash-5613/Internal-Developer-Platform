@@ -1,0 +1,25 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: forgeflow-reader
+rules:
+  - apiGroups: [""]
+    resources:
+      - nodes
+      - namespaces
+      - pods
+      - services
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: forgeflow-reader-binding
+subjects:
+  - kind: ServiceAccount
+    name: forgeflow-api
+    namespace: forgeflow-system
+roleRef:
+  kind: ClusterRole
+  name: forgeflow-reader
+  apiGroup: rbac.authorization.k8s.io
